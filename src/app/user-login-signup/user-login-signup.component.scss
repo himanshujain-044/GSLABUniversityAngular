@@ -1,0 +1,43 @@
+.flex-container {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  //   background-image: url("/src/assets/backgroundLogin.jpeg");
+
+  mat-form-field {
+    font-size: 18px;
+    width: 300px;
+  }
+  mat-icon:hover {
+    cursor: pointer;
+  }
+}
+.loginDiv,
+.singupDiv {
+  margin-top: 7.5%;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: lightgray;
+  mat-radio-button ~ mat-radio-button {
+    margin-left: 10px;
+  }
+}
+.singupDiv {
+  margin-top: 2%;
+}
+h1 {
+  color: navy;
+  text-align: center;
+}
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: blue !important; /*inner circle color change*/
+}
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: lightgray; /*outer ring color change*/
+}
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  opacity: 0 !important; /*click effect color change*/
+  background-color: lightgray;
+}
