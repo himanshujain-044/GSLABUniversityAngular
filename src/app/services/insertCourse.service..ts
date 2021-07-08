@@ -9,29 +9,19 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { Signup } from '../models/signup.model';
+import { Course } from '../models/course.model';
 @Injectable({ providedIn: 'root' })
-export class SignUpUser {
+export class InsertCourse {
   error = new Subject<string>();
 
   constructor(private http: HttpClient) {}
   baseUrl: string = environment.baseUrl;
-  createUserSignup(
-    name: string,
-    phone: string,
-    email: string,
-    password: string,
-    gender: string,
-    role: string
-  ) {
-    const postData: Signup = {
-      name,
-      phone,
-      email,
-      password,
-      gender,
-      role,
+  createNewCoruse(courseName: string, duration: string, prerequisites: string) {
+    const postData: Course = {
+      courseName,
+      duration,
+      prerequisites,
     };
-    return this.http.post<Signup>(`${this.baseUrl}/signUp`, postData);
+    return this.http.post<Course>(`${this.baseUrl}/insertCourse`, postData);
   }
 }

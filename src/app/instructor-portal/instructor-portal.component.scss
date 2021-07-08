@@ -1,0 +1,31 @@
+.header {
+  height: 80px;
+  background-color: lightgrey;
+  padding-top: 21px;
+  padding-left: 50px;
+}
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40;
+  // border: 1px solid black;
+}
+.headerButton {
+  float: right;
+  margin-right: 50px;
+  margin-top: 1px;
+  // border: 1px solid #000000;
+
+  flex-grow: 10;
+}
+button {
+  float: right;
+  margin-left: 20px;
+}
+.body {
+  border: 1px solid black;
+  height: 500px;
+}
+.header {
+  display: flex;
+  direction: column;
+}

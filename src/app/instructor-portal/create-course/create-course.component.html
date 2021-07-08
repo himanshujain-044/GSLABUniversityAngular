@@ -1,0 +1,40 @@
+<div class="backdrop"></div>
+<div class="bgimg">
+<div class="alert-box">
+  <div class="alert-box-actions">
+      <!-- <div class="flex-container"> -->
+          <h1>Create your course</h1>
+    <form (ngSubmit)="onCreateCourse()" [formGroup]="createCourseForm">
+      <mat-form-field>
+        <mat-label>Enter course name</mat-label>
+        <input matInput formControlName="courseName" />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Duration of course</mat-label>
+        <input matInput formControlName="duration" />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Enter prerequisites</mat-label>
+
+        <input matInput formControlName="prerequisites" />
+      </mat-form-field>
+
+      <br /><br />
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!createCourseForm.valid"
+      >
+        Create course
+      </button> &nbsp;&nbsp;
+      <button   mat-raised-button
+        color="primary" (click)="onClose()">Cancel</button>
+    </form>
+    <!-- <button (click)="onConfirm()">Confirm</button>
+    <button (click)="onClose()">Cancel</button> -->
+    <!-- </div> -->
+  </div>
+  </div>
+</div>

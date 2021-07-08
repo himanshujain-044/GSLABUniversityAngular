@@ -7,17 +7,27 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { MatTableModule } from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { UserLoginSignupComponent } from './user-login-signup/user-login-signup.component';
-import { HttpClientModule } from '@angular/common/http';
-import {  SignUpUser } from './services/signup.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SignUpUser } from './services/signup.service';
+import { StudentPortalComponent } from './student-portal/student-portal.component';
+import { InstructorPortalComponent } from './instructor-portal/instructor-portal.component';
+import { AuthInterceptorService } from './services/interceptor.service';
+import { CreateCourseComponent } from './instructor-portal/create-course/create-course.component';
 
 @NgModule({
-  declarations: [AppComponent, UserLoginSignupComponent],
+  declarations: [
+    AppComponent,
+    UserLoginSignupComponent,
+    StudentPortalComponent,
+    InstructorPortalComponent,
+    CreateCourseComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,8 +41,16 @@ import {  SignUpUser } from './services/signup.service';
     MatRadioModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatTableModule,
   ],
-  providers: [SignUpUser],
+  providers: [
+    SignUpUser,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

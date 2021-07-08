@@ -1,0 +1,77 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 50;
+}
+p {
+  margin: 10px 0px 0px 15px;
+}
+.alert-box {
+ 
+ position: absolute;
+  top: 5vh;
+left:33vw;
+  width: 350px;
+  padding: 15px;
+  z-index: 100;
+  //   background: white;
+  border: solid 2px black;
+  border-radius: 7px;
+   display: flex;
+   box-shadow: 5px 5px 5px 5px #888888;
+  background-color: lightgrey;
+   background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(233, 227, 227);
+    background-image: url("../../../assets/backgroundLogin.jpeg");
+  justify-content: center;
+  mat-form-field {
+    font-size: 20px;
+    width: 200px;
+  }
+  // box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+}
+
+.alert-box-actions {
+  text-align: center;
+    
+}
+// button {
+//   border: solid 1px black;
+//   background-color: lightgray;
+//   margin: 0px 20px 0px 20px;
+// }
+.flex-container {
+  // background-color: navy;
+  // width: 100px;
+  // height: 100%;
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  //   background-image: url("/src/assets/backgroundLogin.jpeg");
+  //height: 100vh;
+  // width: 100vh;
+  mat-form-field {
+    font-size: 18px;
+    width: 300px;
+  }
+}
+h1{
+    text-align: center;
+    color: navy;
+}
+// .bgimg {
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     position: fixed;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     background-color: rgb(233, 227, 227);
+//     background-image: url("../../../assets/backgroundLogin.jpeg");
+// }
