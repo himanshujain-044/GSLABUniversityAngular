@@ -1,4 +1,5 @@
-  <div class="background">
+<div class="background" *ngIf='!isLoading'>
+  <app-alter-error [error] = "errorOccured" (close)="onCloseError()" *ngIf="errorOccured"></app-alter-error>
   <div class="flex-container">
     <div class="loginDiv" *ngIf="isLogin">
       <h1>GS Lab University</h1>
@@ -44,10 +45,7 @@
         <button mat-raised-button color="primary" (click)="onSignup()">
           Singup
         </button>
-        <div class="alter alter-danger" *ngIf="errorOccured">
-          <h3>Error</h3>
-          <p>{{ errorOccured }}</p>
-        </div>
+        
       </form>
     </div>
 
@@ -113,11 +111,9 @@
         <button mat-raised-button color="primary" (click)="onLogin()">
           Back to Login
         </button>
-        <div class="alter" *ngIf="errorOccured">
-          <h3>Error</h3>
-          <p>{{ errorOccured }}</p>
-        </div>
+       
       </form>
     </div>
   </div>
 </div>
+<app-loading-spinner *ngIf='isLoading'></app-loading-spinner>

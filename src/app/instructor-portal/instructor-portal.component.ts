@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Courses } from '../services/course.service.';
 import { LoginUser } from '../services/login.service';
 
 export interface TableColumnNames {
@@ -20,20 +21,58 @@ const ELEMENT_DATA: TableColumnNames[] = [
   styleUrls: ['./instructor-portal.component.scss'],
 })
 export class InstructorPortalComponent implements OnInit {
-  constructor(private logout: LoginUser, private router: Router) {}
-
+  constructor(
+    private authService: LoginUser,
+    private router: Router,
+    private getCourses: Courses
+  ) {}
+  // displayedColumns: string[] = ['courseName', 'numberOfStuEnrolled'];
+  // dataSource: any = [];
+  showCourseDetail: boolean = false;
+  courseDetail: any = true;
   isNewCourse: boolean = false;
-  ngOnInit(): void {}
-  displayedColumns: string[] = ['courseName', 'status'];
-  dataSource = ELEMENT_DATA;
+  coursesInfo: any = [];
+  displayedColumns: string[] = ['courseName', 'Student enrolled'];
+  dataSource: any = [];
+  errorOccured: any = null;
+  ngOnInit(): void {
+    this.getInstructorCourses();
+  }
   onLogout() {
-    this.logout.logoutUser();
+    console.log('logout');
+    this.authService.logoutUser();
   }
   onCreateNewCourse() {
     this.isNewCourse = true;
+    this.router.navigate(['/create-new-course']);
+  }
+  getInstructorCourses() {
+    this.getCourses.getCourses().subscribe(
+      (responseData) => {
+        console.log(responseData);
+        this.dataSource = responseData.data;
+        console.log(this.dataSource);
+      },
+      (error) => {
+        if (error.status === 401)
+          this.errorOccured = 'Please Login again ,session time out';
+      }
+    );
   }
   onCloseCreateCourse() {
     this.router.navigate(['/instructorPortal']);
     this.isNewCourse = false;
+  }
+
+  onShowCourseDetail(courseDetail: any) {
+    this.showCourseDetail = true;
+    this.courseDetail = courseDetail;
+  }
+  onCloseCD() {
+    this.showCourseDetail = false;
+  }
+  onCloseErSuc() {
+    this.errorOccured = null;
+    this.router.navigate(['/login']);
   }
 }

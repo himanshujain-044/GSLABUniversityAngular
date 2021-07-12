@@ -31,14 +31,27 @@ export class LoginUser {
       })
     );
   }
+  autoLogin() {
+    const userLoginInfo: any = JSON.parse(
+      localStorage.getItem('userData') || '{}'
+    );
+    if (!userLoginInfo) {
+      return;
+    }
+    this.user.next(userLoginInfo);
+  }
   logoutUser() {
     return this.http.get<any>(`${this.baseUrl}/logout`, {}).subscribe(
       (data) => {
+        console.log('data');
         this.user.next(null);
+        localStorage.removeItem('userData');
         this.router.navigate(['/login']);
       },
       (error) => {
+        console.log('error');
         this.user.next(null);
+        localStorage.removeItem('userData');
         this.router.navigate(['/login']);
       }
     );

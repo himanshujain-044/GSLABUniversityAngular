@@ -7,15 +7,15 @@
   // width: 100px;
   // height: 100%;
   display: flex;
-  background-color: white;
+  background-color: #fff8dc;
   justify-content: center;
   //   background-image: url("/src/assets/backgroundLogin.jpeg");
   //height: 100vh;
   // width: 100vh;
-   background-repeat: no-repeat;
-    background-size: cover;
-    background-color: rgb(233, 227, 227);
-    background-image: url("../../assets/loginBackground1.jpeg");
+  //  background-repeat: no-repeat;
+  //   background-size: cover;
+  //   background-color: rgb(233, 227, 227);
+  //   background-image: url("../../assets/loginBackground1.jpeg");
   mat-form-field {
     font-size: 18px;
     width: 300px;
@@ -30,13 +30,13 @@
   border: 1px solid black;
   padding: 20px;
   border-radius: 5px;
-  position: absolute;
+  // position: fixed;
   background-repeat: no-repeat;
-    background-size: cover;
-    background-color: rgb(233, 227, 227);
-    background-image: url("../../assets/loginBCKI.jpeg");
+  background-size: cover;
+  background-color: rgb(233, 227, 227);
+  background-image: url("../../assets/loginBCKI.jpeg");
   //height: 400px;
-  background-color: lightgray;
+  // background-color: lightgray;
   mat-radio-button ~ mat-radio-button {
     margin-left: 10px;
   }
@@ -71,9 +71,21 @@ h1 {
 .background {
   width: 100%;
   height: 100%;
-position: absolute;
+  position: absolute;
   // background-position: center;
   // background-repeat: no-repeat;
   // background-size: cover;
-  background-color:lightgray 
+  background-color: #fff8dc;
+}
+h3,
+p {
+  padding: 10px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+}
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+  background-color: black !important;
 }

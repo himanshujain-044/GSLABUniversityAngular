@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { InsertCourse } from 'src/app/services/insertCourse.service.';
+import { Courses } from 'src/app/services/course.service.';
 
 @Component({
   selector: 'app-create-course',
@@ -13,8 +13,8 @@ export class CreateCourseComponent implements OnInit {
   nonWhitespaceRegExp: RegExp = new RegExp('\\S');
   @Output() close = new EventEmitter<void>();
   //@Output() confirm = new EventEmitter<void>();
-  constructor(private insertCourse: InsertCourse) {}
-
+  constructor(private course: Courses, private router: Router) {}
+  errorOccured: any = null;
   ngOnInit(): void {
     this.createCourseForm = new FormGroup({
       courseName: new FormControl('', [
@@ -30,23 +30,25 @@ export class CreateCourseComponent implements OnInit {
   }
 
   onClose() {
+     this.router.navigate(['/instructorPortal']);
     this.close.emit();
+
   }
   onCreateCourse() {
     const courseName = this.createCourseForm.value.courseName;
-    const duration = this.createCourseForm.value.duration;
+    const duration = this.createCourseForm.value.duration + 'h';
     const prerequisites = this.createCourseForm.value.prerequisites;
 
-    this.insertCourse
-      .createNewCoruse(courseName,duration,prerequisites)
-      .subscribe(
-        (responseData) => {
-          console.log(responseData);
-          this.createCourseForm.reset();
-        },
-        (error) => {
-        //  this.errorOccured = error.message;
-        }
-      );
+    this.course.createNewCoruse(courseName, duration, prerequisites).subscribe(
+      (responseData: any) => {
+        this.errorOccured = responseData.message;
+      },
+      (error: any) => {
+        this.errorOccured = error.message;
+      }
+    );
+  }
+  onCloseError() {
+    this.errorOccured = null;
   }
 }

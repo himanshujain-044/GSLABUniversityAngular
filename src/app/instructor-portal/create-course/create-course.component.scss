@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   background: white;
-  z-index: 50;
+  z-index: 48;
 }
 p {
   margin: 10px 0px 0px 15px;
@@ -15,9 +15,9 @@ p {
  position: absolute;
   top: 5vh;
 left:33vw;
-  width: 350px;
+  width: 400px;
   padding: 15px;
-  z-index: 100;
+  z-index: 98;
   //   background: white;
   border: solid 2px black;
   border-radius: 7px;
@@ -31,7 +31,7 @@ left:33vw;
   justify-content: center;
   mat-form-field {
     font-size: 20px;
-    width: 200px;
+    width: 235px;
   }
   // box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
 }

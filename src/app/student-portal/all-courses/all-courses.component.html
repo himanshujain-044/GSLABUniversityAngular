@@ -1,0 +1,20 @@
+<div class="flex-container">
+     <app-alter-error [error] = "errorOccured" (click)="onCloseErSuc()" *ngIf="errorOccured"></app-alter-error>
+    <h3>All the courses available</h3>
+  <div class="allCourses" *ngFor="let course of allCourses">
+    <span (click)="onShowCourseDetail(course)">{{ course.courseName }}</span>
+    <button mat-raised-button color="primary" [disabled]="onCheckEnroll(course)" (click)="onEnroll(course)"> Enroll</button>
+  </div>
+  <button mat-raised-button color="basic" id="closeBtn" (click)="onClose()">
+    Close
+  </button>
+</div>
+<app-show-course-detail
+  *ngIf="showCourseDetail"
+  [courseName]="courseDetail.courseName"
+  [courseInstructorEmail]="courseDetail.createdBy"
+  [courseInstructorName]="courseDetail.instructorName"
+  [courseDuration]="courseDetail.duration"
+  (close)="onCloseCD()"
+></app-show-course-detail>
+<!-- <app-alter-error [error] = "errorOccured" (close)="onCloseError()" *ngIf="errorOccured"></app-alter-error> -->

@@ -4,8 +4,23 @@
       <h1>Welcome to GS Lab University</h1>
     </div>
     <div class="headerButton">
-      <button mat-raised-button color="warn" (click)='onLogout()'>Logout</button>
-      <button mat-raised-button color="primary">All courses</button>
+      <!-- <button mat-raised-button color="warn" (click)="onLogout()">
+        Logout
+      </button> -->
+
+      <button
+        mat-mini-fab
+        color="warn"
+        aria-label="Example icon button with a menu icon"
+        (click)="onLogout()"
+        id="logoutBtn"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+      <h3 id="userName">{{ userName.name }}</h3>
+      <button mat-raised-button color="primary" (click)="onAllCourses()">
+        All courses
+      </button>
     </div>
   </div>
   <div class="body">
@@ -13,19 +28,43 @@
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="courseName">
           <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.courseName }}</td>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            (click)="onShowCourseDetail(element)"
+          >
+            {{ element.courseName }}
+          </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef>Status</th>
-          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            (click)="onShowCourseDetail(element)"
+          >
+            {{ element.status }}
+          </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
-
-   
     </div>
   </div>
 </div>
+<app-show-course-detail
+  *ngIf="showCourseDetail"
+  [courseName]="courseDetail.courseName"
+  [courseInstructorEmail]="courseDetail.createdBy"
+  [courseInstructorName]="courseDetail.instructorName"
+  [courseDuration]="courseDetail.duration"
+  (close)="onCloseCD()"
+></app-show-course-detail>
+
+<app-alter-error
+  [error]="errorOccured"
+  (close)="onCloseError()"
+  *ngIf="errorOccured"
+></app-alter-error>

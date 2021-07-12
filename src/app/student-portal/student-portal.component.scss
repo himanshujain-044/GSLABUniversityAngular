@@ -17,15 +17,40 @@ h1 {
 
   flex-grow: 10;
 }
-button {
+button ,#userName{
   float: right;
-  margin-left: 20px;
+  margin-left: 30px;
+}
+#userName{
+  margin-top: 7px;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+#logoutBtn{
+  margin-left: 3px;
 }
 .body {
   border: 1px solid black;
-  height: 500px;
 }
 .header {
   display: flex;
   direction: column;
 }
+.bodyDiv{
+ display: flex;
+ justify-content: center;
+}
+th{
+  font-size: 20px;  
+  font-family: 'Times New Roman', Times, serif;
+  font-style: oblique;
+}
+td{
+   font-size: 15px;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: oblique;
+}
+td:hover{
+  cursor: pointer;
+}
+table{width: 400px;}

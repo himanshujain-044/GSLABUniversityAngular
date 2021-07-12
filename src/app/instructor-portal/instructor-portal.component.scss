@@ -1,12 +1,13 @@
 .header {
   height: 80px;
-  background-color: lightgrey;
+  //background-color: lightgrey;
   padding-top: 21px;
   padding-left: 50px;
 }
 h1 {
   font-family: "Times New Roman", Times, serif;
   font-size: 40;
+  color: white;
   // border: 1px solid black;
 }
 .headerButton {
@@ -21,11 +22,43 @@ button {
   float: right;
   margin-left: 20px;
 }
-.body {
-  border: 1px solid black;
-  height: 500px;
-}
+
 .header {
+  margin-top: 30px;
   display: flex;
   direction: column;
+}
+.bodyDiv {
+  // background-color: pink;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.flex-container{
+  // background-color: pink;
+  height: 100%;
+   background-size: cover; 
+   width: 100%;
+    height: 100%;
+     position: absolute; 
+     background-image: url("../../assets/contentBackGround.jpg"); 
+}
+// .body{
+//    height: 80vh;
+// }
+th {
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  font-style: oblique;
+}
+td {
+  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+  font-style: oblique;
+}
+td:hover {
+  cursor: pointer;
+}
+table {
+  width: 350px;
 }

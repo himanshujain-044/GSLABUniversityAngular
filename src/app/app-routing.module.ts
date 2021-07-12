@@ -5,6 +5,7 @@ import { InstructorPortalComponent } from './instructor-portal/instructor-portal
 import { UserLoginSignupComponent } from './user-login-signup/user-login-signup.component';
 import { AuthGuardService } from './services/auth.service';
 import { CreateCourseComponent } from './instructor-portal/create-course/create-course.component';
+import { AllCoursesComponent } from './student-portal/all-courses/all-courses.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,17 +14,33 @@ const routes: Routes = [
     path: 'studentPortal',
     component: StudentPortalComponent,
     canActivate: [AuthGuardService],
+
+    // children: [
+    //   {
+
+    //   },
+    // ],
+  },
+  {
+    path: 'allCourses',
+    component: AllCoursesComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'instructorPortal',
     component: InstructorPortalComponent,
     canActivate: [AuthGuardService],
-    children: [
-      {
-        path: 'create-new-course',
-        component: CreateCourseComponent,
-      },
-    ],
+    // children: [
+    //   {
+    //     path: 'create-new-course',
+    //     component: CreateCourseComponent,
+    //   },
+    // ],
+  },
+  {
+    path: 'create-new-course',
+    component: CreateCourseComponent,
+    canActivate: [AuthGuardService],
   },
   { path: 'page-not-found', component: InstructorPortalComponent },
   { path: '**', redirectTo: 'page-not-found' },

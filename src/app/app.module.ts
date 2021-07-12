@@ -19,6 +19,10 @@ import { StudentPortalComponent } from './student-portal/student-portal.componen
 import { InstructorPortalComponent } from './instructor-portal/instructor-portal.component';
 import { AuthInterceptorService } from './services/interceptor.service';
 import { CreateCourseComponent } from './instructor-portal/create-course/create-course.component';
+import { AlterErrorComponent } from './user-login-signup/alter-error/alter-error.component';
+import { AllCoursesComponent } from './student-portal/all-courses/all-courses.component';
+import { ShowCourseDetailComponent } from './student-portal/all-courses/show-course-detail/show-course-detail.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,10 @@ import { CreateCourseComponent } from './instructor-portal/create-course/create-
     StudentPortalComponent,
     InstructorPortalComponent,
     CreateCourseComponent,
+    AlterErrorComponent,
+    AllCoursesComponent,
+    ShowCourseDetailComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

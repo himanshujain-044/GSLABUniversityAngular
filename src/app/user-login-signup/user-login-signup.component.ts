@@ -20,6 +20,7 @@ export class UserLoginSignupComponent implements OnInit {
   isSignup: boolean = false;
   isLogin: boolean = true;
   loginForm: any;
+  isLoading: boolean = false;
   signupForm: any;
   nonWhitespaceRegExp: RegExp = new RegExp('\\S');
   errorOccured = null;
@@ -33,7 +34,7 @@ export class UserLoginSignupComponent implements OnInit {
         Validators.required,
         Validators.pattern(this.nonWhitespaceRegExp),
       ]),
-      rememberme: new FormControl(''),
+      rememberme: new FormControl('false'),
     });
 
     this.signupForm = new FormGroup({
@@ -55,23 +56,27 @@ export class UserLoginSignupComponent implements OnInit {
     });
   }
   onSubmitLogin() {
+    this.isLoading = true;
     console.log(this.loginForm);
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
     const rememberme = this.loginForm.value.rememberme;
     this.login.loginUser(email, password, rememberme).subscribe(
       (responseData: any) => {
+        this.isLoading = false;
         if (responseData.role === 'Student')
           this.router.navigate(['/studentPortal']);
         else this.router.navigate(['/instructorPortal']);
       },
       (error) => {
+        this.isLoading = false;
         this.errorOccured = error.error.message;
       }
     );
   }
   onSubmitSignup() {
     // console.log(this.signupForm);
+    this.isLoading = true;
     const name = this.signupForm.value.name;
     const phone = this.signupForm.value.mobile;
     const email = this.signupForm.value.email;
@@ -82,12 +87,15 @@ export class UserLoginSignupComponent implements OnInit {
     this.signUp
       .createUserSignup(name, phone, email, password, gender, role)
       .subscribe(
-        (responseData) => {
-          console.log(responseData);
+        (responseData: any) => {
+          this.isLoading = false;
+          this.errorOccured = responseData.message;
           this.signupForm.reset();
         },
         (error) => {
-          this.errorOccured = error.message;
+          this.isLoading = false;
+        console.log(error)
+          this.errorOccured = error.error.message;
         }
       );
   }
@@ -101,5 +109,9 @@ export class UserLoginSignupComponent implements OnInit {
     this.errorOccured = null;
     this.isSignup = false;
     this.isLogin = true;
+  }
+  onCloseError() {
+    this.errorOccured = null;
+    this.loginForm.reset();
   }
 }
