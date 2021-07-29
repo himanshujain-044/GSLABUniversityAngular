@@ -1,119 +1,127 @@
-<div class="background" *ngIf='!isLoading'>
-  <app-alter-error [error] = "errorOccured" (close)="onCloseError()" *ngIf="errorOccured"></app-alter-error>
-  <div class="flex-container">
-    <div class="loginDiv" *ngIf="isLogin">
-      <h1>GS Lab University</h1>
-      <form [formGroup]="loginForm">
-        <mat-form-field class="form-field">
-          <mat-label> Enter your email</mat-label>
-          <input matInput #input formControlName="email" />
-        </mat-form-field>
-        <br />
-        <mat-form-field class="form-field">
-          <mat-label>Enter your password</mat-label>
-          <input
-            matInput
-            [type]="hide ? 'password' : 'text'"
-            formControlName="password"
-          />
+<!-- <div class="background" *ngIf="!isLoading"> -->
+  <!-- <div class="main-container"> -->
+    
+  <div class="flex-container" *ngIf="!isLoading">
+    <h1>GS Lab University</h1>
+   <mat-tab-group dynamicHeight animationDuration="500ms" mat-align-tabs="center">
+        <mat-tab label="Login">
+        <div class="loginDiv" *ngIf="isLogin">
+          <form [formGroup]="loginForm">
+            <mat-form-field class="form-field">
+              <mat-label> Email</mat-label>
+              <input matInput #input formControlName="email" />
+              <mat-error>Please enter a valid email</mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="form-field">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                formControlName="password"
+              />
+              <mat-error>Please enter the password</mat-error>
+              <mat-icon
+                class="icon"
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                {{ hide ? "visibility_off" : "visibility" }}</mat-icon
+              >
+            </mat-form-field>
+            <br />
+            <mat-checkbox formControlName="rememberme">
+              Keep me signed in</mat-checkbox
+            >
+            <br /><br />
+            <button
+              mat-raised-button
+             
+              type="submit"
+              [disabled]="!loginForm.valid"
+              (click)="onSubmitLogin()"
+            >
+              Login
+            </button> 
 
-          <mat-icon
-            class="icon"
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-          >
-            {{ hide ? "visibility_off" : "visibility" }}</mat-icon
-          >
-        </mat-form-field>
-        <br />
-        <mat-checkbox formControlName="rememberme">
-          Keep me signed in</mat-checkbox
-        >
-        <br /><br />
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          [disabled]="!loginForm.valid"
-          (click)="onSubmitLogin()"
-        >
-          Login
-        </button>
-        &nbsp;&nbsp;
-        <button mat-raised-button color="primary" (click)="onSignup()">
-          Singup
-        </button>
-        
-      </form>
-    </div>
+            <!-- <button mat-raised-button color="primary" (click)="onSignup()">
+              Signup
+            </button> -->
+         </form>
+        </div>
+      </mat-tab>
+     <mat-tab label="Signup"
+        ><div class="singupDiv">
+          <!-- <h1>GS Lab University</h1> -->
+           <form (ngSubmit)="onSubmitSignup()" [formGroup]="signupForm">
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" />
 
-    <div class="singupDiv" *ngIf="isSignup">
-      <h1>GS Lab University</h1>
-      <form (ngSubmit)="onSubmitSignup()" [formGroup]="signupForm">
-        <mat-form-field>
-          <mat-label>Enter your name</mat-label>
-          <input matInput formControlName="name" />
-        </mat-form-field>
-        <br />
-        <mat-form-field>
-          <mat-label>Enter your mobile number</mat-label>
-          <input matInput formControlName="mobile" />
-        </mat-form-field>
-        <br />
-        <mat-form-field>
-          <mat-label>Enter your email</mat-label>
+                <mat-error>Please enter your name</mat-error>
+            </mat-form-field>
 
-          <input matInput formControlName="email" />
-          <mat-error *ngIf="true">Please enter a valid email</mat-error>
-        </mat-form-field>
-        <br />
-        <mat-form-field>
-          <mat-label>Create your password</mat-label>
-          <input
-            matInput
-            [type]="hide ? 'password' : 'text'"
-            formControlName="password"
-          />
-
-          <mat-icon
-            matSuffix
-            (click)="hide = !hide"
-            [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide"
-          >
-            {{ hide ? "visibility_off" : "visibility" }}</mat-icon
-          >
-        </mat-form-field>
-        <br />
-        <mat-form-field>
-          <mat-label>Role</mat-label>
-          <mat-select required formControlName="role">
-            <mat-option value="Student"> Student </mat-option>
-            <mat-option value="Instructor"> Instructor </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <br />
-        <mat-radio-group aria-label="Select an option" formControlName="gender">
-          <mat-radio-button value="male">male</mat-radio-button>
-          <mat-radio-button value="female">female</mat-radio-button>
-        </mat-radio-group>
-        <br /><br />
-        <button
-          mat-raised-button
-          color="primary"
-          [disabled]="!signupForm.valid"
-        >
-          Singup
-        </button>
-        &nbsp;&nbsp;
-        <button mat-raised-button color="primary" (click)="onLogin()">
-          Back to Login
-        </button>
        
-      </form>
-    </div>
+            <br />
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+
+              <input matInput formControlName="email" />
+              <mat-error>Please enter a valid email</mat-error>
+            </mat-form-field>
+<br>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                formControlName="password"
+              />
+              <mat-error>Password length should be more than 7</mat-error>
+              <mat-icon
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                {{ hide ? "visibility_off" : "visibility" }}</mat-icon
+              >
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+              <mat-label>Role</mat-label>
+              <mat-select required formControlName="role">
+                <mat-option value="Student"> Student </mat-option>
+                <mat-option value="Instructor"> Instructor </mat-option>
+              </mat-select>
+            </mat-form-field> 
+            <!-- <br> -->
+
+            <!-- <mat-label id="gender">Gender</mat-label>
+
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="gender"
+            >
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group> -->
+            <br /><br />
+            <button
+              mat-raised-button
+            
+              [disabled]="!signupForm.valid"
+            >
+              Signup
+            </button>
+          </form>
+        </div></mat-tab
+      >
+    </mat-tab-group>
   </div>
-</div>
-<app-loading-spinner *ngIf='isLoading'></app-loading-spinner>
+  <!-- </div> -->
+<!-- </div> -->
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

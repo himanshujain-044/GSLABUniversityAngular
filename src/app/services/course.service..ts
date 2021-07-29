@@ -13,8 +13,10 @@ import { InsCourse, GetCourses } from '../models/course.model';
 @Injectable({ providedIn: 'root' })
 export class Courses {
   error = new Subject<string>();
-
-  constructor(private http: HttpClient) {}
+  userName: any;
+  constructor(private http: HttpClient) {
+    this.userName = JSON.parse(localStorage.getItem('userData') || '{}');
+  }
   baseUrl: string = environment.baseUrl;
   createNewCoruse(courseName: string, duration: string, prerequisites: string) {
     const postData: InsCourse = {
@@ -35,7 +37,27 @@ export class Courses {
     return this.http.get<any>(`${this.baseUrl}/courses`, {});
   }
   getAllCourses() {
-    return this.http.get<any>(`${this.baseUrl}/allCourses`, {});
+    return this.http.get<any>(`${this.baseUrl}/userCourses`, {});
+    //   .pipe(
+    //   map((ele: any) => {
+    //     const arr: any = [];
+    //     ele.data.forEach((dataInfo: any) => {
+    //       let data = {
+    //         courseName: dataInfo.courseName,
+    //         // duration: dataInfo.duration,
+    //         // prerequisites: dataInfo.prerequisites,
+    //         // Enroll: true,
+    //         // createdBy:dataInfo.createdBy
+    //       };
+    //       // if (dataInfo.enrolledStu.includes(this.userName.email)) {
+    //       //   data.Enroll = false;
+    //       // }
+    //       arr.push(data);
+    //     });
+
+    //     return arr;
+    //   })
+    // );
   }
   getUserCourses() {
     return this.http.get<any>(`${this.baseUrl}/userCourses`, {});

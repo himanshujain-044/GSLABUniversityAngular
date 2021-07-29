@@ -18,18 +18,18 @@ export class SignUpUser {
   baseUrl: string = environment.baseUrl;
   createUserSignup(
     name: string,
-    phone: string,
+    // phone: string,
     email: string,
     password: string,
-    gender: string,
+    // gender: string,
     role: string
   ) {
     const postData: Signup = {
       name,
-      phone,
+      // phone,
       email,
       password,
-      gender,
+      // gender,
       role,
     };
     return this.http.post<Signup>(`${this.baseUrl}/signUp`, postData);

@@ -1,0 +1,39 @@
+<div class="header">
+  <h1>Welcome to GS Lab University</h1>
+
+  <div class="headerButton">
+    <button
+      mat-raised-button
+      color="basic"
+      (click)="onAllCoursesH()"
+      *ngIf="isStudentPage"
+    >
+      All courses
+    </button>
+    <button
+      mat-raised-button
+      color="basic"
+      (click)="onAddNewCourseH()"
+      *ngIf="isInstructorPage"
+    >
+      Add new course
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-button id="menu" [matMenuTriggerFor]="menu">
+      <button
+        mat-mini-fab
+        color="basic"
+        aria-label="Example icon button with a menu icon"
+        id="logoutBtn"
+      >
+        <i class="fa fa-user" aria-hidden="false"></i>
+      </button>
+    </button>
+    <mat-menu #menu="matMenu" class="menu">
+      <span> {{ userDetail.name }}</span
+      ><br />
+      <span> {{ userDetail.email }}</span>
+      <button mat-menu-item (click)="onLogout()">Logout</button>
+    </mat-menu>
+  </div>
+</div>

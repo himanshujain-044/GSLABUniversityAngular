@@ -1,0 +1,60 @@
+.header {
+  position: fixed;
+  display: flex;
+  direction: column;
+  background-color: black;
+  padding-top: 21px;
+  padding-left: 50px;
+  height: 80px;
+  width: 100%;
+  z-index: 5;
+}
+.headerButton {
+  position: absolute;
+  right: 0%;
+  // margin-right: 30px;
+}
+span {
+  margin-left: 15px;
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+}
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40;
+  color: white;
+}
+::ng-deep .menu {
+  align-items: center;
+  width: 220px;
+}
+.fa {
+  border: 1px solid white;
+  font-size: 20px;
+}
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 18px;
+    margin-top: 3px;
+  }
+  .header {
+    padding-top: 5px;
+    padding-left: 10px;
+    height: 50px;
+  }
+  .headerButton {
+    margin-top: 2px;
+    position: absolute;
+    transform: scale(0.8, 0.8);
+    // margin-right: 0%;
+    // right: 0%;
+  }
+  .fa {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  #logoutBtn {
+    height: 35px;
+    width: 35px;
+  }
+}

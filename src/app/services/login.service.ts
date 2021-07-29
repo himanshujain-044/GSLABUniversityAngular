@@ -11,12 +11,17 @@ import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Login } from '../models/login.model';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({ providedIn: 'root' })
 export class LoginUser {
   error = new Subject<string>();
   user = new BehaviorSubject<any>(null);
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
   baseUrl: string = environment.baseUrl;
   loginUser(email: string, password: string, rememberme: boolean) {
     const postData: Login = {
@@ -28,6 +33,7 @@ export class LoginUser {
       tap((resData) => {
         this.user.next(resData);
         localStorage.setItem('userData', JSON.stringify(resData));
+        this.autoLogout();
       })
     );
   }
@@ -43,17 +49,29 @@ export class LoginUser {
   logoutUser() {
     return this.http.get<any>(`${this.baseUrl}/logout`, {}).subscribe(
       (data) => {
-        console.log('data');
         this.user.next(null);
         localStorage.removeItem('userData');
+        this._snackBar.open('User logout successfully', 'Ok', {
+          duration: 3000,
+        });
         this.router.navigate(['/login']);
       },
       (error) => {
-        console.log('error');
         this.user.next(null);
         localStorage.removeItem('userData');
+        this._snackBar.open('User logout successfully', 'Ok', {
+          duration: 3000,
+        });
         this.router.navigate(['/login']);
       }
     );
+  }
+  autoLogout() {
+    setTimeout(() => {
+      this._snackBar.open('Session timeout', 'Ok', {
+        duration: 3000,
+      });
+      this.logoutUser();
+    }, 1000 * 60 * 60);
   }
 }

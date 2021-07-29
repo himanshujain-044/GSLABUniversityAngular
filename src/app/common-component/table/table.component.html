@@ -1,0 +1,47 @@
+<div class="tableContainer">
+  <table
+    mat-table
+    [dataSource]="data"
+    class="mat-elevation-z8"
+    matSort
+    [ngClass]="{ table: isTableWidth }"
+  >
+    <ng-container *ngFor="let column of colData">
+      <ng-container matColumnDef="{{ column }}">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ column | titlecase }}
+        </th>
+        <td class="{{ column }}" mat-cell *matCellDef="let element">
+          <!-- <button
+            *ngIf="column == 'Enroll'"
+            mat-raised-button
+            color="primary"
+            [disabled]="!element.Enroll"
+            (click)="onEnroll(element)"
+          >
+            Enroll
+          </button> -->
+
+          <span
+            (click)="
+              column === 'courseName' ? onShowCourseDetail(element) : false
+            "
+            *ngIf="column !== 'Enroll'"
+          >
+            {{ element[column] }}</span
+          >
+        </td>
+      </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colData"></tr>
+    <tr mat-row *matRowDef="let data; columns: colData"></tr>
+  </table>
+  <!-- <div class="paginator">
+    <mat-paginator [length]="'6'" [pageSize]="2"></mat-paginator>
+  </div> -->
+</div>

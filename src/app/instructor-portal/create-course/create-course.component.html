@@ -1,41 +1,45 @@
-<div class="backdrop"></div>
-<div class="bgimg">
-  <app-alter-error [error] = "errorOccured" (click)="onCloseError()" *ngIf="errorOccured"></app-alter-error>
-<div class="alert-box" *ngIf="!errorOccured">
-  <div class="alert-box-actions">
-      <!-- <div class="flex-container"> -->
-          <h1>Create your course</h1>
-    <form (ngSubmit)="onCreateCourse()" [formGroup]="createCourseForm">
+<app-header (logout)="onLogout()" [userName]="userName.name"></app-header>
+<div class="backgroundImg">
+  <div class="add-course">
+    <h1>Add your course</h1>
+    <form [formGroup]="createCourseForm" (ngSubmit)="onCreateCourse()">
       <mat-form-field>
         <mat-label>Enter course name</mat-label>
-        <input matInput formControlName="courseName" />
+        <input
+          appreance="outline"
+          matInput
+          formControlName="courseName"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>Enter course name</mat-error>
       </mat-form-field>
       <br />
       <mat-form-field>
         <mat-label>Duration of course(hours)</mat-label>
-        <input matInput formControlName="duration" />
+        <input
+          matInput
+          formControlName="duration"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>Total duration in number</mat-error>
       </mat-form-field>
       <br />
       <mat-form-field>
         <mat-label>Enter prerequisites</mat-label>
 
-        <input matInput formControlName="prerequisites" />
+        <input
+          matInput
+          formControlName="prerequisites"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>Enter at least one prerequisite</mat-error>
       </mat-form-field>
 
       <br /><br />
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="!createCourseForm.valid"
-      >
-        Create course
-      </button> &nbsp;&nbsp;
-      <button   mat-raised-button
-        color="primary" (click)="onClose()">Cancel</button>
+
+      <span (click)="onClose()"> Cancel </span>
+
+      <button mat-raised-button color="basic">Add course</button>
     </form>
-    <!-- <button (click)="onConfirm()">Confirm</button>
-    <button (click)="onClose()">Cancel</button> -->
-    <!-- </div> -->
-  </div>
   </div>
 </div>

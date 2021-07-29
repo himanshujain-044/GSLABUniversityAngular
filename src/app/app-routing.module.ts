@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: 'instructorPortal',
     component: InstructorPortalComponent,
-    canActivate: [AuthGuardService],
+     canActivate: [AuthGuardService],
     // children: [
     //   {
     //     path: 'create-new-course',

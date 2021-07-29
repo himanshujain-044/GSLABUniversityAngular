@@ -1,49 +1,23 @@
-<div class="flex-container">
-  <!-- <app-create-course
-    (close)="onCloseCreateCourse()"
-    *ngIf="isNewCourse"
-  ></app-create-course> -->
-  <div class="header">
-    <div>
-      <h1>Welcome to GS Lab University</h1>
-    </div>
-    <div class="headerButton">
-      <!-- <button mat-raised-button color="warn" (click)="onLogout()">
-        Logout
-      </button> -->
-        <button mat-mini-fab color="warn" aria-label="Example icon button with a menu icon" (click)="onLogout()">
-          <mat-icon>logout</mat-icon>
-        </button>
-      <button mat-raised-button color="basic" (click)="onCreateNewCourse()">
-        Create new course
-      </button>
-    </div>
-  </div>
-  <div class="body">
-    <div class="bodyDiv">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container matColumnDef="courseName">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let element" (click)="onShowCourseDetail(element)">{{ element.courseName }}</td>
-        </ng-container>
+<app-header
+  (logout)="onLogout()"
+  [userName]="userName.name"
+  [isInstructorPage]="true"
+  (onAddNewCourse)="onAddNewCourse()"
+></app-header>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="Student enrolled">
-          <th mat-header-cell *matHeaderCellDef>Student enrolled</th>
-          <td mat-cell *matCellDef="let element">{{ element.numberOfStuEnrolled }}</td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-    </div>
-  </div>
+<div class="flex-container">
+  <h2>Courses with number of enrolled students</h2>
+  <h3 *ngIf="!dataSource.length">No data found</h3>
+
+  <app-table
+    *ngIf="dataSource.length"
+    [data]="dataSource"
+    [colData]="colData"
+    (showCourseDetail)="onShowCourseDetail($event)"
+  ></app-table>
 </div>
 <app-show-course-detail
   *ngIf="showCourseDetail"
-  [courseName]="courseDetail.courseName"
-  [courseInstructorEmail]="courseDetail.createdBy"
-  [courseInstructorName]="courseDetail.instructorName"
-  [courseDuration]="courseDetail.duration"
+  [courseDetail]="courseDetail"
   (close)="onCloseCD()"
 ></app-show-course-detail>
- <app-alter-error [error] = "errorOccured" (click)="onCloseErSuc()" *ngIf="errorOccured"></app-alter-error>

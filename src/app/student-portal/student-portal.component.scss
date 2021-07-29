@@ -1,14 +1,10 @@
-.header {
-  height: 80px;
-  background-color: lightgrey;
-  padding-top: 21px;
-  padding-left: 50px;
-}
 h1 {
   font-family: "Times New Roman", Times, serif;
   font-size: 40;
+  color: white;
   // border: 1px solid black;
 }
+
 .headerButton {
   float: right;
   margin-right: 50px;
@@ -17,40 +13,89 @@ h1 {
 
   flex-grow: 10;
 }
-button ,#userName{
+button,
+#userName {
   float: right;
   margin-left: 30px;
 }
-#userName{
+// #userName {
+
+// }
+.flex-container {
+  // background-color: pink;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  
+  // background-image: url("../../assets/pexels-henry-&-co-1939485.jpg");
+}
+#userName {
   margin-top: 7px;
   font-size: 20px;
-  font-family: 'Times New Roman', Times, serif;
+
+  color: white;
+  font-family: "Times New Roman", Times, serif;
 }
-#logoutBtn{
+#logoutBtn {
   margin-left: 3px;
 }
-.body {
-  border: 1px solid black;
-}
+
 .header {
   display: flex;
   direction: column;
+  background-color: black;
+  padding-top: 21px;
+  padding-left: 50px;
+  height: 80px;
 }
-.bodyDiv{
- display: flex;
- justify-content: center;
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
 }
-th{
-  font-size: 20px;  
-  font-family: 'Times New Roman', Times, serif;
-  font-style: oblique;
+h2,
+h6 {
+  ///@function
+  // display: block;
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+  //width: 100%;
+  //border:1px solid black;
 }
-td{
-   font-size: 15px;
-  font-family: 'Times New Roman', Times, serif;
-  font-style: oblique;
+h6 {
+  margin-top: 10px;
+  font-size: 20px;
 }
-td:hover{
+th {
+  color: black;
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  //font-style: oblique;
+}
+td {
+  font-size: 15px;
+  font-family: "Times New Roman", Times, serif;
+  //font-style: oblique;
+}
+.courseName:hover {
   cursor: pointer;
+  transform: scale(1.1, 1.1);
 }
-table{width: 400px;}
+table {
+  width: 400px;
+  // scroll-behavior: auto;
+  // height: 100px;
+}
+tr:nth-child(even) {
+  background-color: #ebedef;
+}

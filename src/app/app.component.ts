@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   constructor(private authService: LoginUser) {}
   ngOnInit() {
     this.authService.autoLogin();
+    // this.authService.autoLogout();
   }
   title = 'GSLabUniversityUI';
 }

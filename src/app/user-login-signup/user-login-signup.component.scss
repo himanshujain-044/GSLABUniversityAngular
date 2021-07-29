@@ -1,24 +1,30 @@
-// .b {
-//   //  background-image: url("/src/assets/backgroundLogin.jpeg");
-//    background-color: navy;
+// .main-container{
+// height: 100%;
+// width: 100%;
+// border: 4px solid green;
+//  background-color: #eaeded;
+//  text-align: center;
+ 
+// // position: absolute;
 // }
 .flex-container {
-  // background-color: navy;
-  // width: 100px;
-  // height: 100%;
-  display: flex;
-  background-color: #fff8dc;
+  display: flex; 
   justify-content: center;
-  //   background-image: url("/src/assets/backgroundLogin.jpeg");
-  //height: 100vh;
-  // width: 100vh;
-  //  background-repeat: no-repeat;
-  //   background-size: cover;
-  //   background-color: rgb(233, 227, 227);
-  //   background-image: url("../../assets/loginBackground1.jpeg");
+  flex-direction: column;
+  // height: 100%;
+  min-height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: #eaeded;
+  // width: max-content; 
+  margin:auto;
+  // border: 1px solid red;
+  align-items: center;
   mat-form-field {
     font-size: 18px;
     width: 300px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
   mat-icon:hover {
     cursor: pointer;
@@ -26,57 +32,74 @@
 }
 .loginDiv,
 .singupDiv {
-  margin-top: 7.5%;
-  border: 1px solid black;
   padding: 20px;
-  border-radius: 5px;
-  // position: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: rgb(233, 227, 227);
-  background-image: url("../../assets/loginBCKI.jpeg");
-  //height: 400px;
-  // background-color: lightgray;
+  
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-color: rgb(233, 227, 227);
+  margin-left: 40px;
+  margin-right: 40px;
+  text-align: center;
+  background-color: white;
   mat-radio-button ~ mat-radio-button {
     margin-left: 10px;
   }
 }
-.singupDiv {
-  margin-top: 2%;
+mat-tab-group {
+  // margin-top: 25px;;
+  // border: 1px solid black;
+  // border-radius: 8px;
+  //  margin: 10px;
+  border-radius: 30px;
+  background-color: white;
+  // box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  // box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
+button {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: auto;
+  background-color: black;
+  color: white;
+}
+// .singupDiv {
+//   // margin-top: 2%;
+//   // height: inherit;
+// }
 h1 {
-  color: navy;
-  text-align: center;
+  color: black;
+  // margin-top: 10px;
+  font-size: 30px;
+  font-family: "Times New Roman", Times, serif;
+  // text-align: center;
 }
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
-  background-color: blue !important; /*inner circle color change*/
+  background-color: blue !important;
 }
 ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked
   .mat-radio-outer-circle {
-  border-color: lightgray; /*outer ring color change*/
+  border-color: lightgray;
 }
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-  opacity: 0 !important; /*click effect color change*/
+  opacity: 0 !important;
   background-color: lightgray;
 }
-.alter {
-  margin-top: 15px;
-  border-radius: 5px;
-  border: 1px solid black;
-  background-color: lightcoral;
-}
+// .alter {
+//   margin-top: 15px;
+//   border-radius: 5px;
+//   border: 1px solid black;
+//   background-color: lightcoral;
+// }
 .icon {
   font-size: 20px;
 }
-.background {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  background-color: #fff8dc;
-}
+// .background {
+// //   width: 100%;
+// //   height: 100%;
+// //   position: absolute;
+// //   background-color: #EAEDED ;
+// // }
 h3,
 p {
   padding: 10px;
@@ -89,3 +112,16 @@ p {
 ::ng-deep .mat-checkbox-ripple .mat-ripple-element {
   background-color: black !important;
 }
+// #gender {
+//   margin-top: 10px;
+//   font-size: 15px;
+//   font-weight: bold;
+//   margin-right: 20px;
+// }
+mat-checkbox {
+  margin-right: 162px;
+  margin-bottom: 20px;
+}
+// mat-radio-group{
+//   margin-right: 130px;
+// }

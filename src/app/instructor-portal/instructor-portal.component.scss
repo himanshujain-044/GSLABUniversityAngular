@@ -1,64 +1,72 @@
-.header {
-  height: 80px;
-  //background-color: lightgrey;
-  padding-top: 21px;
-  padding-left: 50px;
-}
-h1 {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 40;
-  color: white;
-  // border: 1px solid black;
-}
-.headerButton {
-  float: right;
-  margin-right: 50px;
-  margin-top: 1px;
-  // border: 1px solid #000000;
-
-  flex-grow: 10;
-}
-button {
+button,
+#userName {
   float: right;
   margin-left: 20px;
 }
+#userName {
+  margin-top: 7px;
+  font-size: 20px;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
 
-.header {
-  margin-top: 30px;
-  display: flex;
-  direction: column;
+h2{
+  margin-top: 100px;
 }
-.bodyDiv {
-  // background-color: pink;
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-}
-.flex-container{
+.flex-container {
   // background-color: pink;
   height: 100%;
-   background-size: cover; 
-   width: 100%;
-    height: 100%;
-     position: absolute; 
-     background-image: url("../../assets/contentBackGround.jpg"); 
+  // background-size: cover;
+  width: 100%;
+ // position: relative;
+  // height: 100%;
+   display: flex;
+    text-align: center;
+    align-items: center;
+  flex-direction: column;
+  position: absolute;
+  background-image: url("../../assets/bgImg.jpg");
+   background-size: cover;
 }
 // .body{
 //    height: 80vh;
 // }
 th {
+//  text-align: center;
+  // align-items: center;
+ // justify-content: center;
+//  justify-content: center;
+// width: 250;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
-  font-style: oblique;
+ // border: 1px solid red;
+  /// font-style: oblique;
+}
+::ng-deep .mat-sort-header-container {
+  display:flex;
+  justify-content:center;
+ 
+}
+h2 {
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+  // margin-top: 100px;
+
 }
 td {
   font-size: 15px;
   font-family: "Times New Roman", Times, serif;
-  font-style: oblique;
+  /// font-style: oblique;
 }
-td:hover {
+.courseName:hover {
+  transform: scale(1.1, 1.1);
   cursor: pointer;
 }
 table {
-  width: 350px;
+  width: 500px;
 }
+ tr:nth-child(even) {
+            background-color: #EBEDEF
+        }

@@ -1,0 +1,54 @@
+tr:nth-child(even) {
+  background-color: #ebedef;
+}
+// tr:nth-child(odd) {
+//   background-color: #f0ffff;
+// }
+
+// .tableContainer {
+//   // position: absolute;
+//   // overflow: auto;
+//   // height: auto;
+//   // position: relative;
+//   border: 1px solid red;
+// }
+// table {
+//   width: 500px;
+// }
+.courseName:hover {
+  cursor: pointer;
+  transform: scale(1.1,1.1);
+  font-weight: bold;
+}
+// .table{
+//   width: 800px;
+// }
+// table{
+//   position: relative;
+//   width: 500px;
+// }
+th {
+  // position: sticky;
+  // width: 100%;
+  // width: 800px;
+  font-size: 15px;
+  color: white;
+  background-color: black;
+}
+::ng-deep .mat-sort-header-arrow {
+  color: white;
+}
+::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+  // text-align: center;
+  // align-items: center;
+}
+@media screen and (max-width: 600px) {
+.table{
+  width: 300px;
+}
+table{
+  width: 300px;
+}
+}
